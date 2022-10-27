@@ -1,19 +1,48 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+const { makeBadge } = require('badge-maker')
+const { writeFile } = require('fs')
+
+// creates an svg badge using badge-maker npm
+function renderLicenseBadge(license) {
+  if (license === 'none') {
+    return
+  } else {
+    const format = {
+      label: 'license',
+      message: license,
+      color: 'brightgreen',
+      style: 'flat',
+    }
+
+    const svg = makeBadge(format)
+    return svg
+  }
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  // https://choosealicense.com/licenses/mit/
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
-// TODO: Create a function to generate markdown for README
+// Generates the markdown for README
 function generateMarkdown(data) {
+  const badge = renderLicenseBadge(data.license)
+
+  // create the SVG in the root
+  writeFile(`./license-badge.svg`, badge, (err) => {
+    if (err) {
+      console.log(err)
+      return err
+    }
+  })
+
   return `
   # ${data.title}
+  ${badge ? '![license badge](./license-badge.svg)' : ''}
 
   ## Description
   ${data.description}
