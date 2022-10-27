@@ -1,9 +1,3 @@
-// Modules needed
-const { readFile, writeFile } = require('fs')
-const inquirer = require('inquirer')
-const generateMarkdown = require('./utils/generateMarkdown')
-
-// Array of questions for user input
 const questions = [
   {
     type: 'input',
@@ -78,35 +72,3 @@ const questions = [
     },
   },
 ]
-
-// Creates the README file
-function writeToFile(fileName, data) {
-  writeFile(fileName, data, () => {
-    console.log(data)
-  })
-}
-
-function init() {
-  inquirer.prompt(questions).then((answers) => {
-    const titledata = generateMarkdown(answers)
-
-    writeToFile('./sample-README.md', titledata)
-  })
-}
-
-// Function call to initialize app
-init()
-
-// [
-//   {
-//     title: 'node',
-//     tableOfContents: true,
-//     description: 'cool',
-//     installation: true,
-//     usage: true,
-//     license: 'MIT',
-//     contribution: true,
-//     testing: true,
-//     username: 'nope',
-//   }
-// ]
