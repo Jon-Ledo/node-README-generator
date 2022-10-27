@@ -18,12 +18,52 @@ function generateMarkdown(data) {
   ## Description
   ${data.description}
 
+  ### My motivations
+  ${data.reason}
+
+  ### What problem does it solve?
+  ${data.problem}
+
+  ### What I learned
+  ${data.learn}
+
+  ## Preview 
+  <!-- include a preview image for your readers -->
+  ![your-project-preview-image](./Assets/)
+
   ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
   - [Credits](#credits)
   - [License](#license)
+  - [Questions](#questions)
 
+  ## Installation
+  ${data.installation}
+
+  ## Usage
+  ${data.usage}
+
+  ## Credits
+  ${data.credits}
+
+  ## License
+  ${data.license}
+
+  ## Badges
+
+  ## How to Contribute
+  ${data.contribution}
+
+  ## Tests
+  ${data.testing}
+
+  ## Questions
+  How to get into contact with me?
+  
+  [My Github Profile](https://github.com/${data.username})
+
+  Email : ${data.email}
 
 `
 }
