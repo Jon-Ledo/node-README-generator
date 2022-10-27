@@ -8,63 +8,135 @@ const questions = [
   {
     type: 'input',
     name: 'title',
-    message: 'Write your project title',
+    message: 'Please enter your project title',
     validate(value) {
       if (value) {
         return true
       }
-      return `Please enter a project title`
+      return `${this.message}`
     },
-  },
-  {
-    type: 'confirm',
-    name: 'tableOfContents',
-    message: 'Would you like a Table of Contents?',
-    default: true,
   },
   {
     type: 'input',
     name: 'description',
-    message: 'In one sentence, can you describe what your project is?',
+    message:
+      'Provide a short description explaining the what, why, and how of your project',
     validate(value) {
       if (value) {
         return true
       }
-      return `Please enter your project description`
+      return `${this.message}`
     },
   },
   {
-    type: 'confirm',
-    name: 'installation',
-    message: 'Do you need an Installation section?',
-    default: true,
+    type: 'input',
+    name: 'motivation',
+    message: 'What was your motivation?',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
+    },
   },
   {
-    type: 'confirm',
+    type: 'input',
+    name: 'reason',
+    message:
+      'Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
+    },
+  },
+  {
+    type: 'input',
+    name: 'problem',
+    message: 'What problem does it solve?',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
+    },
+  },
+  {
+    type: 'input',
+    name: 'learn',
+    message: 'What did you learn?',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
+    },
+  },
+  {
+    type: 'input',
+    name: 'installation',
+    message: 'What are the steps required to install your project?',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
+    },
+  },
+  {
+    type: 'input',
     name: 'usage',
-    message: 'Would you like a Usage section?',
-    default: true,
+    message: 'Provide instructions and examples for use',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
+    },
+  },
+  {
+    type: 'input',
+    name: 'credits',
+    message:
+      'List any collaborators, any third party assets or links to tutorials used',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
+    },
   },
   {
     type: 'list',
     name: 'license',
     message: 'Would license are you using?',
-    choices: ['none', 'MIT'],
+    choices: ['none', 'MIT', 'Academic Free License v3.0', 'not sure?'],
     filter(choice) {
       return choice
     },
   },
   {
-    type: 'confirm',
+    type: 'input',
     name: 'contribution',
-    message: 'Would you like a "How to Contribute" section?',
-    default: true,
+    message: 'How would you like other developers to contribute?',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
+    },
   },
   {
-    type: 'confirm',
+    type: 'input',
     name: 'testing',
-    message: 'Would you like a "Testing" section?',
-    default: true,
+    message: 'Write tests for your application and provide examples',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
+    },
   },
   {
     type: 'input',
@@ -74,7 +146,18 @@ const questions = [
       if (value) {
         return true
       }
-      return `Please enter your github username`
+      return `${this.message}`
+    },
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'Please enter the email you wish to be contacted with',
+    validate(value) {
+      if (value) {
+        return true
+      }
+      return `${this.message}`
     },
   },
 ]
@@ -90,23 +173,9 @@ function init() {
   inquirer.prompt(questions).then((answers) => {
     const titledata = generateMarkdown(answers)
 
-    writeToFile('./sample-README.md', titledata)
+    writeToFile(`./${answers.title}-README.md`, titledata)
   })
 }
 
 // Function call to initialize app
 init()
-
-// [
-//   {
-//     title: 'node',
-//     tableOfContents: true,
-//     description: 'cool',
-//     installation: true,
-//     usage: true,
-//     license: 'MIT',
-//     contribution: true,
-//     testing: true,
-//     username: 'nope',
-//   }
-// ]
