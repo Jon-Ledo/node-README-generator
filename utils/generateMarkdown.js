@@ -18,10 +18,16 @@ function renderLicenseBadge(license) {
   }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 function renderLicenseLink(license) {
-  // https://choosealicense.com/licenses/mit/
+  if (license === 'Apache License 2.0') {
+    return `https://choosealicense.com/licenses/apache-2.0/`
+  } else if (license === 'GNU General Public License') {
+    return `https://choosealicense.com/licenses/gpl-3.0/`
+  } else if (license === 'ISC License') {
+    return `https://choosealicense.com/licenses/isc/`
+  } else if (license === 'MIT License') {
+    return `https://choosealicense.com/licenses/mit/`
+  } else return
 }
 
 // TODO: Create a function that returns the license section of README
@@ -31,6 +37,7 @@ function renderLicenseSection(license) {}
 // Generates the markdown for README
 function generateMarkdown(data) {
   const badge = renderLicenseBadge(data.license)
+  const licenseLink = renderLicenseLink(data.license)
 
   // create the SVG in the root
   writeFile(`./license-badge.svg`, badge, (err) => {
@@ -77,9 +84,9 @@ function generateMarkdown(data) {
   ${data.credits}
 
   ## License
-  ${data.license}
+  [${badge ? '![license badge](./license-badge.svg)' : ''}](${licenseLink})
 
-  ## Badges
+  For more information about the licensing of this project, please click on the badge above, or follow this link ${licenseLink}
 
   ## How to Contribute
   ${data.contribution}

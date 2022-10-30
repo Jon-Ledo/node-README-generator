@@ -94,7 +94,13 @@ const questions = [
     type: 'list',
     name: 'license',
     message: 'Would license are you using?',
-    choices: ['none', 'MIT', 'Academic Free License v3.0', 'not sure?'],
+    choices: [
+      'Apache License 2.0',
+      'GNU General Public License',
+      'ISC License',
+      'MIT License',
+      'none',
+    ],
     filter(choice) {
       return choice
     },
