@@ -4,7 +4,7 @@ const { writeFile } = require('fs')
 // creates an svg badge using badge-maker npm
 function renderLicenseBadge(license) {
   if (license === 'none') {
-    return
+    return ''
   } else {
     const format = {
       label: 'license',
@@ -18,6 +18,7 @@ function renderLicenseBadge(license) {
   }
 }
 
+// get license links using conditionals
 function renderLicenseLink(license) {
   if (license === 'Apache License 2.0') {
     return `https://choosealicense.com/licenses/apache-2.0/`
@@ -27,23 +28,40 @@ function renderLicenseLink(license) {
     return `https://choosealicense.com/licenses/isc/`
   } else if (license === 'MIT License') {
     return `https://choosealicense.com/licenses/mit/`
-  } else return
+  } else return ' '
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+// creates markdown for licensing section
+function renderLicenseSection(license, badge, link) {
+  if (license === 'none') {
+    return 'No license at this time'
+  } else {
+    return `
+  [${badge ? '![license badge](./license-badge.svg)' : ''}](${link})
+
+  For more information about the licensing of this project, please click on the badge above, or follow this link ${link}
+  `
+  }
+}
 
 // Generates the markdown for README
 function generateMarkdown(data) {
   const badge = renderLicenseBadge(data.license)
   const licenseLink = renderLicenseLink(data.license)
+  const hasLicenseSection = renderLicenseSection(
+    data.license,
+    badge,
+    licenseLink
+  )
 
   // create the SVG in the root
   writeFile(`./license-badge.svg`, badge, (err) => {
     if (err) {
       console.log(err)
       return err
+    }
+    if (badge === '') {
+      return
     }
   })
 
@@ -84,9 +102,7 @@ function generateMarkdown(data) {
   ${data.credits}
 
   ## License
-  [${badge ? '![license badge](./license-badge.svg)' : ''}](${licenseLink})
-
-  For more information about the licensing of this project, please click on the badge above, or follow this link ${licenseLink}
+  ${hasLicenseSection}
 
   ## How to Contribute
   ${data.contribution}
