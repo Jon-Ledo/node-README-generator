@@ -8,6 +8,8 @@ A README generator made using [nodeJS](https://nodejs.org/en/docs/), [InquirerJS
 
 An svg file is also created, so that you can include license badges in your projects as well.
 
+![project-preview-image](./Assets/nodejs.JPG)
+
 ### My motivations
 
 Writing and filling out README's for projects can be hard, long and tedious. This code helps to simplify the process and is reusable for any future project. Structure of the README is based on this guide found [here](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
@@ -24,7 +26,7 @@ First time experimenting with nodeJS and other modules. It was tricky getting us
 
 ## Preview
 
-![project-preview-image](./Assets/nodejs.JPG)
+[video link to preview project](https://drive.google.com/file/d/1Z7jmgpR3Ph7ux4GzcD3ohSYlfGt8QgLv/view?usp=share_link)
 
 ## Table of Contents
 
