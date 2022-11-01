@@ -24,7 +24,7 @@ First time experimenting with nodeJS and other modules. It was tricky getting us
 
 ## Preview
 
-![your-project-preview-image](./Assets/)
+![project-preview-image](./Assets/nodejs.JPG)
 
 ## Table of Contents
 
