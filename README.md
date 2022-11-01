@@ -26,7 +26,8 @@ First time experimenting with nodeJS and other modules. It was tricky getting us
 
 ## Preview
 
-[video link to preview project](https://drive.google.com/file/d/1Z7jmgpR3Ph7ux4GzcD3ohSYlfGt8QgLv/view?usp=share_link)
+[video to youtube link](https://www.youtube.com/watch?v=I0ntQS_Zfp8)
+[video to google drive link](https://drive.google.com/file/d/1Z7jmgpR3Ph7ux4GzcD3ohSYlfGt8QgLv/view?usp=share_link)
 
 ## Table of Contents
 
